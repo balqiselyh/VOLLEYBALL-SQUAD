@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cosmic Volley Squad 2.0</title>
+<style>
+:root{--cyan:#55e7ff;--pink:#ff69c9;--gold:#ffd76a;--panel:rgba(10,24,58,.88)}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;color:#f5f8ff;background:#050b20;overflow-x:hidden}
+#space{position:fixed;inset:0;z-index:-2;background:radial-gradient(circle at 18% 20%,#263a78,transparent 30%),radial-gradient(circle at 80% 70%,#3d1c69,transparent 28%),linear-gradient(145deg,#050b20,#101a43 55%,#080d25)}
+#space:before{content:"";position:absolute;inset:-50%;background-image:radial-gradient(2px 2px at 40px 60px,#fff 99%,transparent),radial-gradient(1px 1px at 90px 130px,#9ceeff 99%,transparent);background-size:240px 260px;animation:drift 65s linear infinite}
+@keyframes drift{to{transform:translate(180px,220px)}}.float{position:fixed;z-index:-1;color:#75eaff;opacity:.18;font-weight:900;letter-spacing:3px;animation:float 12s ease-in-out infinite;pointer-events:none}
+@keyframes float{50%{transform:translateY(-35px) rotate(8deg)}}
+header{padding:16px 5%;display:flex;justify-content:space-between;align-items:center;gap:12px;position:sticky;top:0;background:#07122ddd;backdrop-filter:blur(12px);z-index:5;border-bottom:1px solid #ffffff20}
+.logo{font-weight:1000;letter-spacing:2px;color:var(--cyan)}nav{display:flex;gap:7px;flex-wrap:wrap}
+button{border:0;border-radius:999px;padding:11px 16px;font-weight:bold;cursor:pointer;color:#06122c;background:linear-gradient(100deg,var(--cyan),#a8f5ff);transition:.2s}button:hover{transform:translateY(-2px);filter:brightness(1.1)}button.alt{background:#ffffff18;color:white;border:1px solid #ffffff40}
+main{width:min(1050px,92%);margin:auto}.hero{text-align:center;padding:70px 12px 48px}.eyebrow{color:var(--gold);font-weight:900;letter-spacing:4px}
+h1{font-size:clamp(2.6rem,8vw,5.5rem);line-height:.98;margin:14px 0;text-shadow:0 0 25px #48dfff88}h1 span,h2{color:var(--cyan)}
+.lead{font-size:1.1rem;color:#d7e4ff;max-width:700px;margin:18px auto 25px}.pill{display:inline-block;padding:7px 13px;border:1px solid #66eaff88;border-radius:99px;color:var(--cyan);font-size:.85rem;margin:4px}
+section{margin:24px 0;padding:27px;background:var(--panel);border:1px solid #80dfff35;border-radius:22px;box-shadow:0 15px 50px #0005;scroll-margin-top:90px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}.card{padding:18px;border-radius:17px;background:#ffffff0c;border:1px solid #ffffff22}.card h3{color:var(--gold);margin-top:0}
+.step{padding:13px 15px;margin:10px 0;border-left:4px solid var(--pink);background:#ffffff0b;border-radius:8px}.step b{color:#ffb7e7}
+input{width:100%;padding:12px;border-radius:12px;border:1px solid #8beaff66;background:#07132f;color:white;margin:8px 0}
+.answer{display:block;width:100%;text-align:left;margin:8px 0;background:#ffffff12;color:white;border:1px solid #ffffff30;border-radius:12px}.answer.correct{background:#1c9b78}.answer.wrong{background:#a13e66}
+.progress{height:11px;border-radius:20px;background:#ffffff20;overflow:hidden;margin:12px 0}#bar{height:100%;width:0;background:linear-gradient(90deg,var(--pink),var(--cyan));transition:.4s}
+.feedback{min-height:25px;color:var(--gold);font-weight:bold}.modal{display:none;position:fixed;inset:0;background:#020615df;z-index:20;align-items:center;justify-content:center;padding:18px}.modal.show{display:flex;animation:fade .25s}
+.modal-box{max-width:480px;width:100%;background:#101f4a;border:1px solid var(--cyan);border-radius:22px;padding:27px;text-align:center;box-shadow:0 0 50px #49dfff55;animation:pop .3s}
+@keyframes fade{from{opacity:0}to{opacity:1}}@keyframes pop{from{transform:scale(.8)}to{transform:scale(1)}}
+#toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,100px);background:#d6fbff;color:#06122c;padding:13px 20px;border-radius:30px;font-weight:900;z-index:30;transition:.35s}#toast.show{transform:translate(-50%,0)}
+footer{text-align:center;padding:32px;color:#aebfe6}
+@media(max-width:650px){header{align-items:flex-start;flex-direction:column}nav button{padding:9px 11px;font-size:.8rem}.hero{padding-top:45px}section{padding:20px}}
+</style></head>
+<body><div id="space"></div><div class="float" style="top:20%;left:3%">SERVE!</div><div class="float" style="top:58%;right:3%">SPIKE!</div><div class="float" style="top:83%;left:12%">TEAMWORK</div>
+<header><div class="logo">🚀 COSMIC VOLLEY SQUAD 2.0</div><nav>
+<button class="alt" onclick="go('home')">Home</button><button class="alt" onclick="go('mission')">Misi</button><button class="alt" onclick="go('skills')">Teknik</button><button class="alt" onclick="go('challenge')">Cabaran</button><button class="alt" onclick="go('quiz')">Kuiz</button></nav></header>
+<main>
+<div class="hero" id="home"><div class="eyebrow">🌌 AKADEMI ANGKASA • TAHUN 3 🌌</div><h1>MISSION: <span>VOLLEY</span><br>CHAMPION!</h1>
+<p class="lead">Sedia, angkasawan? Sertai misi bola tampar untuk belajar kemahiran menghantar dan menerima bola menggunakan teknik menyangga aras bawah.</p>
+<span class="pill">SK 1.6</span><span class="pill">SP 1.6.1</span><span class="pill">SP 1.6.2</span><p><button onclick="startMission()">🚀 MULAKAN MISI</button> <button class="alt" onclick="speak('Selamat datang ke Cosmic Volley Squad. Mari belajar bola tampar!')">🔊 Dengar Pengenalan</button></p></div>
+<section id="mission"><h2>🪐 Misi Angkasawan</h2><div class="grid">
+<div class="card"><h3>🎯 Objektif 1</h3><p>Melakukan kemahiran menghantar dan menerima bola menggunakan teknik menyangga aras bawah dengan betul sekurang-kurangnya 2 daripada 3 percubaan pada jarak 5 meter.</p></div>
+<div class="card"><h3>🧠 Objektif 2</h3><p>Menyatakan sekurang-kurangnya dua teknik menyangga aras bawah secara lisan.</p></div>
+<div class="card"><h3>🤝 Objektif 3</h3><p>Berkomunikasi dengan rakan melalui arahan mudah, perkataan atau isyarat tangan semasa aktiviti.</p></div></div></section>
+<section id="skills"><h2>🏐 Makmal Teknik: Menyangga Aras Bawah</h2><p>Gunakan kedua-dua lengan bawah untuk mengawal bola.</p>
+<div class="step"><b>1. Kedudukan sedia</b><br>Buka kaki seluas bahu, bengkokkan lutut sedikit dan condongkan badan ke hadapan.</div>
+<div class="step"><b>2. Cantumkan tangan</b><br>Luruskan kedua-dua tangan dan rapatkan ibu jari. Pastikan kedua-dua lengan selari.</div>
+<div class="step"><b>3. Sentuhan bola</b><br>Biarkan bola menyentuh bahagian lengan bawah, bukan tapak tangan.</div>
+<div class="step"><b>4. Hantar bola</b><br>Gunakan pergerakan kaki dan badan untuk mengarahkan bola kepada rakan. Elakkan menghayun tangan secara berlebihan.</div>
+<div class="step"><b>5. Bersedia semula</b><br>Kembali ke kedudukan sedia dan lihat pergerakan bola.</div>
+<button onclick="speak('Kedudukan sedia. Cantumkan tangan. Sentuh bola menggunakan lengan bawah. Gunakan kaki dan badan untuk mengarahkan bola. Kemudian bersedia semula.')">🔊 Dengar Langkah Teknik</button>
+<div class="card" style="margin-top:17px"><h3>🎬 Ruang Video Pembelajaran</h3><p>Tampal pautan video YouTube yang sesuai.</p><input id="videoUrl" placeholder="Tampal pautan YouTube di sini"><button onclick="loadVideo()">Papar Video</button><div id="videoFrame" style="margin-top:14px"></div></div></section>
+<section id="challenge"><h2>🌠 Cabaran Komunikasi Pasukan</h2><p>Apakah arahan ringkas yang boleh digunakan supaya bola mudah diterima oleh rakan?</p><div class="grid"><div class="card"><h3>📣 Arahan suara</h3><p>Contoh: “Saya!”, “Bersedia!” atau “Hantar kepada saya!”</p></div><div class="card"><h3>✋ Isyarat tangan</h3><p>Gunakan isyarat yang dipersetujui bersama untuk menunjukkan arah hantaran.</p></div></div>
+<p>Tulis satu arahan yang boleh kamu gunakan:</p><input id="teamAnswer" placeholder="Contoh: Saya!"><button onclick="saveAnswer()">Hantar Jawapan</button><p id="teamFeedback" class="feedback"></p></section>
+<section id="quiz"><h2>🧩 Kuiz Galactic</h2><p>Jawab semua soalan untuk mengumpul mata pasukan.</p><div class="progress"><div id="bar"></div></div><p id="qCount"></p><h3 id="question"></h3><div id="answers"></div><p id="quizFeedback" class="feedback"></p><button id="nextBtn" onclick="nextQuestion()" style="display:none">Soalan Seterusnya ➜</button><p id="scoreText"></p></section>
+<section id="practice"><h2>🏅 Semakan Latihan Pasukan</h2><p>Tandakan perkara yang telah dilakukan semasa latihan.</p><div class="card">
+<label><input type="checkbox" class="check"> Saya berdiri dalam kedudukan sedia.</label><br><label><input type="checkbox" class="check"> Saya mencantumkan tangan dengan betul.</label><br><label><input type="checkbox" class="check"> Saya menyentuh bola menggunakan lengan bawah.</label><br><label><input type="checkbox" class="check"> Saya mengarahkan bola kepada rakan.</label><br><label><input type="checkbox" class="check"> Saya berkomunikasi dengan ahli pasukan.</label><p id="checkCount" class="feedback">0 daripada 5 selesai.</p></div></section></main>
+<footer>🚀 COSMIC VOLLEY SQUAD 2.0 • Belajar, Bergerak dan Bekerjasama!</footer>
+<div class="modal" id="modal"><div class="modal-box"><div style="font-size:3rem">🛸</div><h2 id="modalTitle">Misi Bermula!</h2><p id="modalText"></p><button onclick="closeModal()">JOM!</button></div></div><div id="toast">✨ Mata pasukan dikemas kini!</div>
+<script>
+const qs=[
+["Bahagian manakah yang digunakan untuk menyangga bola?",["Tapak tangan","Lengan bawah","Kepala"],1,"Betul! Bola disentuh menggunakan bahagian lengan bawah."],
+["Bagaimanakah kedudukan kaki semasa bersedia?",["Kaki dibuka seluas bahu","Kaki dirapatkan dan lutut dikunci","Duduk di atas lantai"],0,"Bagus! Kaki dibuka seluas bahu dan lutut dibengkokkan sedikit."],
+["Apakah yang perlu dilakukan selepas menghantar bola?",["Membelakangkan rakan","Bersedia semula","Duduk"],1,"Tepat! Kembali ke kedudukan sedia."],
+["Mengapakah komunikasi penting dalam permainan?",["Supaya pasukan bekerjasama","Supaya tidak perlu bergerak","Supaya bola dihentikan"],0,"Ya! Komunikasi membantu rakan memahami tindakan."],
+["Apakah cara sesuai untuk mengarahkan bola?",["Menghayun tangan sekuat hati","Menggunakan kaki dan badan","Menutup mata"],1,"Hebat! Gunakan kaki dan badan untuk mengawal arah hantaran."]
+];let qi=0,score=0,answered=false;
+function go(id){document.getElementById(id).scrollIntoView({behavior:"smooth"})}
+function modal(t,m){document.getElementById("modalTitle").textContent=t;document.getElementById("modalText").textContent=m;document.getElementById("modal").classList.add("show")}
+function closeModal(){document.getElementById("modal").classList.remove("show")}
+function startMission(){modal("🚀 Misi Bermula!","Ikuti makmal teknik, bekerjasama dalam cabaran dan jawab kuiz untuk mengumpul mata.")}
+function speak(t){if(!("speechSynthesis"in window)){toast("Audio suara tidak disokong oleh pelayar ini.");return}speechSynthesis.cancel();let u=new SpeechSynthesisUtterance(t);u.lang="ms-MY";u.rate=.9;speechSynthesis.speak(u)}
+function toast(t){let x=document.getElementById("toast");x.textContent=t;x.classList.add("show");setTimeout(()=>x.classList.remove("show"),2200)}
+function loadVideo(){let url=document.getElementById("videoUrl").value.trim(),id="";try{let u=new URL(url);id=u.hostname.includes("youtu.be")?u.pathname.slice(1):(u.searchParams.get("v")||"");if(!id&&u.pathname.includes("/embed/"))id=u.pathname.split("/embed/")[1]}catch(e){}if(!/^[\w-]{11}$/.test(id)){toast("Sila masukkan pautan YouTube yang sah.");return}document.getElementById("videoFrame").innerHTML='<div style="position:relative;padding-bottom:56.25%;height:0"><iframe src="https://www.youtube.com/embed/'+id+'" style="position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:14px" allowfullscreen title="Video pembelajaran"></iframe></div>'}
+function render(){answered=false;let q=qs[qi];document.getElementById("qCount").textContent=`Soalan ${qi+1} daripada ${qs.length}`;document.getElementById("bar").style.width=(qi/qs.length*100)+"%";document.getElementById("question").textContent=q[0];document.getElementById("quizFeedback").textContent="";document.getElementById("nextBtn").style.display="none";let a=document.getElementById("answers");a.innerHTML="";q[1].forEach((v,i)=>{let b=document.createElement("button");b.className="answer";b.textContent=v;b.onclick=()=>choose(i,b);a.appendChild(b)});document.getElementById("scoreText").textContent=""}
+function choose(i,btn){if(answered)return;answered=true;let q=qs[qi];document.querySelectorAll(".answer").forEach((b,n)=>{b.disabled=true;if(n===q[2])b.classList.add("correct")});if(i===q[2]){score++;toast("+1 mata pasukan!")}else btn.classList.add("wrong");document.getElementById("quizFeedback").textContent=q[3];document.getElementById("bar").style.width=((qi+1)/qs.length*100)+"%";document.getElementById("nextBtn").style.display="inline-block";document.getElementById("nextBtn").textContent=qi===qs.length-1?"Lihat Keputusan":"Soalan Seterusnya ➜"}
+function nextQuestion(){if(!answered)return;if(qi<qs.length-1){qi++;render()}else{document.getElementById("question").textContent="Misi Kuiz Selesai!";document.getElementById("answers").innerHTML="";document.getElementById("quizFeedback").textContent=`Skor kamu: ${score} / ${qs.length}. Teruskan berlatih!`;document.getElementById("nextBtn").style.display="none";document.getElementById("scoreText").textContent="🏆 Tahniah kerana menyelesaikan kuiz!";modal("🏆 Keputusan Misi",`Kamu memperoleh ${score} daripada ${qs.length} mata. Syabas, pasukan!`)}}
+function saveAnswer(){let v=document.getElementById("teamAnswer").value.trim();document.getElementById("teamFeedback").textContent=v?`Bagus! Arahan pasukan kamu: “${v}”`:"Tulis satu arahan dahulu.";if(v)toast("Jawapan komunikasi dihantar!")}
+document.querySelectorAll(".check").forEach(c=>c.addEventListener("change",()=>{let n=document.querySelectorAll(".check:checked").length;document.getElementById("checkCount").textContent=`${n} daripada 5 selesai.`;if(n===5)modal("🏅 Lencana Diperoleh!","Kamu telah melengkapkan semua semakan latihan. Syabas!")}));
+render();setTimeout(()=>modal("🌌 Selamat Datang, Angkasawan!","Bersedia meneroka kemahiran bola tampar? Tekan JOM untuk memulakan pengembaraan."),600);
+</script></body></html>
